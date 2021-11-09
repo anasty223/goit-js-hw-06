@@ -16,18 +16,23 @@ const form = document.querySelector('.login-form')
 form.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
-    event.preventDefault();
+  event.preventDefault();
     
-  const {elements: { email, password }} = event.currentTarget;
+  const elementEl = event.currentTarget;
+  const mail = elementEl.email.value;
+  const password = elementEl.password.value;
 
-     if (email.value === "" || password.value === "") {
+  if (mail === "" || password === "") {
     return alert("не заполнены все поля");
+  } else {
+    const formEl = {
+      mail, password
+       
+    }
+    console.log(formEl)
+    event.currentTarget.reset();
   }
-
-  console.log(`Email: ${email.value}, Password: ${password.value}`);
-  event.currentTarget.reset();
 }
-
 
 // ==================================================
 
